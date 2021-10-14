@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from './style.css'
+import style from './style.scss'
 import { Link } from "react-scroll";
 import classnames from 'classnames'
 
@@ -27,7 +27,7 @@ export default function Navbar({items}) {
                     )}>{item.text}</div>
                 </Link>
             </div>
-        );
+        )
     })
 
     return (
