@@ -1,7 +1,8 @@
 import React from 'react';
 import Navbar from '../Navbar/Component';
 import Section from '../Section/Component';
-
+import Profile from '../Profile/Component';
+import photo from '../../profile_photo.jpg'
 
 function App() {
     let text = "";
@@ -17,19 +18,20 @@ function App() {
             ]}/>
             <Section id="home" style={{
                 backgroundColor: "#000",
-                color: "#FFF"
             }}>
-                <p>{text}</p>
+                <Profile
+                    photo={photo}
+                    name="Name" 
+                    job="Not a web-developer"
+                    about = {"This is a text about me." + " das".repeat(100)}/>
             </Section>
             <Section id="portfolio" style={{
                 backgroundColor: "#222",
-                color: "#FFF"
             }}>
                 <p>{text}</p>
             </Section>
             <Section id="contact" style={{
                 backgroundColor: "#000",
-                color: "#FFF"
             }}>
                 <p>{text}</p>
             </Section>

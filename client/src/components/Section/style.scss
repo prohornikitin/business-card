@@ -3,4 +3,19 @@
     margin: 0;
     box-sizing: border-box;
     width: 100%;
+    color: #FFF;
+    margin: auto;
+    padding: 100px 0 128px 0;
+}
+
+.content {
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.photo {
+    width: 250px;
+    border-radius: 100%; /* Радиус скругления */
+}
+
+.photo_caption {
+    margin: 0;
+    height: 60px;
+}
+
+.text {
+    text-align: center;
+    font-size: 14pt;
+    font-weight: 200;
+    line-height: 18pt;
+}
+
+.about {
+    margin: auto 72px;
+    height: min-content;
+}
