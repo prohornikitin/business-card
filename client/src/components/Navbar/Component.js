@@ -24,7 +24,9 @@ export default function Navbar({items}) {
                     <div className={classnames(
                         style.link, 
                         isActive ? style.link_selected : ""
-                    )}>{item.text}</div>
+                    )}>
+                        {item.text}
+                    </div>
                 </Link>
             </div>
         )
