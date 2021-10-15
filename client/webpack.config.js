@@ -3,8 +3,9 @@ const path = require("path");
 module.exports = {
   entry: "./src/index.js",
   output: {
+    filename: "index.js",
     path: path.resolve(__dirname, "public"),
-    filename: "index.js"
+    assetModuleFilename: 'images/[hash][ext][query]'
   },
   module: {
     rules: [

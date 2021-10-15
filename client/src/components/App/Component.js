@@ -2,6 +2,8 @@ import React from 'react';
 import Navbar from '../Navbar/Component';
 import Section from '../Section/Component';
 import Profile from '../Profile/Component';
+import Portfolio from '../Portfolio/Component';
+
 import photo from '../../profile_photo.jpg'
 
 function App() {
@@ -25,10 +27,14 @@ function App() {
                     job="Not a web-developer"
                     about = {"This is a text about me." + " das".repeat(100)}/>
             </Section>
-            <Section id="portfolio" style={{
-                backgroundColor: "#222",
+            <Section id="portfolio" title="Portfolio" style={{
+                backgroundColor: "#282828",
             }}>
-                <p>{text}</p>
+                <Portfolio items={[
+                    {imageRef:"images/portfolio/mystand-1.jpg", title:"Title", technologies: ["React", "Express"]},
+                    {imageRef:"images/portfolio/never-0.jpg", title:"Title", technologies: ["React", "Python"]},
+                    {imageRef:"images/portfolio/never-1.jpg", title:"Title", technologies: ["Angular / Ruby on rails"]}
+                ]}/>
             </Section>
             <Section id="contact" style={{
                 backgroundColor: "#000",
