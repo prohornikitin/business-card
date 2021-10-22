@@ -1,0 +1,16 @@
+.container {
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+    background-color: #18A0FB;
+    margin: auto;
+}
+
+.container:hover {
+    background-color: #0470AB;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+}
