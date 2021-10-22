@@ -1,0 +1,32 @@
+.input {
+    display: none;
+}
+
+.label {
+    width: max-content;
+    display: block;
+    padding: 6px 12px;
+    font-weight: 400;
+    font-size: 12pt;
+    line-height: 18pt;
+    margin: 4px;
+    background-color: #383838;
+    background-clip: padding-box;
+    outline: none;
+    border: 0;
+    border-radius: 80px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.label:hover {
+    background-color: #282828;
+    color: #18A0FB;
+}
+
+.label:active {
+    background-color: #202020;
+    color: #FFF
+}   
+
