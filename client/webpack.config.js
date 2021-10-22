@@ -1,4 +1,6 @@
 const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
+
 
 module.exports = {
   entry: "./src/index.js",
@@ -39,5 +41,12 @@ module.exports = {
         type: 'asset/resource',
       }
     ]
-  }
+  },
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: "./src/portfolio_images", to: "./images/uploaded" },
+      ],
+    }),
+  ],
 }

@@ -2,11 +2,11 @@ import React from "react";
 import s from './style.scss'
 import classnames from 'classnames'
 
-function createItem({imageRef, title, technologies}) {
+function createItem({image, title, technologies}) {
     return (
-        <div key={imageRef} 
+        <div key={image} 
             className={s.item} 
-            style={{background: `url(${imageRef}) center center/cover`,}}
+            style={{background: `url(${image}) center center/cover`,}}
         >
             <div className={s.item__content} style={{background: "#111A"}}>
                 <h4 className={s.item__title}>{title}</h4>

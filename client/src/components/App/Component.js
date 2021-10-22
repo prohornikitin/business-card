@@ -34,9 +34,9 @@ function App() {
                 backgroundColor: "#282828",
             }}>
                 <Portfolio items={[
-                    {imageRef:"images/portfolio/mystand-1.jpg", title:"Title", technologies: ["React", "Express"]},
-                    {imageRef:"images/portfolio/never-0.jpg", title:"Title", technologies: ["React", "Python"]},
-                    {imageRef:"images/portfolio/never-1.jpg", title:"Title", technologies: ["Angular / Ruby on rails"]}
+                    {image:"images/uploaded/mystand-1.jpg", title:"Title", technologies: ["React", "Express"]},
+                    {image:"images/uploaded/never-0.jpg", title:"Title", technologies: ["React", "Python"]},
+                    {image:"images/uploaded/never-1.jpg", title:"Title", technologies: ["Angular / Ruby on rails"]}
                 ]}/>
             </Section>
             <Section id="contact" title="Contact" style={{backgroundColor: "#000"}}>
@@ -47,7 +47,7 @@ function App() {
                 }}>
                     <IconLink icon={github_icon} href="https://github.com/prohornikitin/business-card"/>
                     <ContactForm/>
-                    <IconLink icon={vk_icon} href="https://vk.com/prokhor40"/>
+                    {/* <IconLink icon={vk_icon} href="https://vk.com/prokhor40"/> */}
                 </div>
             </Section>
         </div>
