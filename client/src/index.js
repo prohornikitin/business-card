@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import Index from './pages/Index';
-
+import ChangeInfo from './pages/controlPanel'
 
 window.renderIndexPage = () => {
     ReactDOM.render(
@@ -13,10 +13,10 @@ window.renderIndexPage = () => {
     );
 }
 
-window.renderChangeInfoPage = () => {
+window.renderControlPanelPage = () => {
     ReactDOM.render(
         <React.StrictMode>
-            <Index/>
+            <ChangeInfo/>
         </React.StrictMode>,
         document.getElementById('root')
     );

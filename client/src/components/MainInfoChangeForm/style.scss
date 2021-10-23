@@ -1,0 +1,32 @@
+.container {
+    min-width: 504px;
+}
+
+
+
+.msg {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin: 4px auto;
+    border-radius: 8px;
+    font-size: 12pt;
+    text-align: center;
+    border: 0;
+    background-color: #449944;
+}
+
+.success_msg {
+    @extend .msg;
+    background-color: #449944;
+}
+
+.error_msg {
+    @extend .msg;
+    background-color: #994444;
+}
+
+.error_item {
+    text-align: justify;
+    margin: 4px;
+}
