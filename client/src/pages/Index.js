@@ -1,15 +1,14 @@
 import React from 'react';
-import Navbar from '../Navbar/Component';
-import Section from '../Section/Component';
-import Profile from '../Profile/Component';
-import Portfolio from '../Portfolio/Component';
-import photo from '../../profile_photo.jpg'
-import ContactForm from '../ContactForm/Component';
-import IconLink from '../IconLink/Component';
-import github_icon from '../../icons/github.png'
-import vk_icon from '../../icons/vk.png'
+import Navbar from '../components/Navbar/Component';
+import Section from '../components/Section/Component';
+import Profile from '../components/Profile/Component';
+import Portfolio from '../components/Portfolio/Component';
+import photo from '../profile_photo.jpg'
+import ContactForm from '../components/ContactForm/Component';
+import IconLink from '../components/IconLink/Component';
+import github_icon from '../icons/github.png'
 
-function App() {
+export default function Index() {
     let text = "";
     for(let i=0; i<1000;++i){
         text += "DAS "
@@ -47,10 +46,8 @@ function App() {
                 }}>
                     <IconLink icon={github_icon} href="https://github.com/prohornikitin/business-card"/>
                     <ContactForm/>
-                    {/* <IconLink icon={vk_icon} href="https://vk.com/prokhor40"/> */}
                 </div>
             </Section>
         </div>
     );
 }
-export default App;
