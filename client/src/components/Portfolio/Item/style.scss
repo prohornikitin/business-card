@@ -1,19 +1,13 @@
-.container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-}
 
-.item {
+
+.container {
     height: 288px;
     width: 368px;
     border-radius: 10px;
+    margin: 16px 0;
 }
 
-.item__content {
+.content {
     box-sizing: border-box;
     padding: 24px;
     width: 100%;
@@ -23,22 +17,22 @@
     transition-duration: 0.5s;
 }
 
-.item__content:hover {
+.content:hover {
     opacity: 100;
 }
 
-.item__title {
+.title {
     margin: 10px;
     font-size: 18pt;
     text-align: center;
 }
 
-.item__technologies {
+.technologies {
     text-align: center;
     
 }
 
-.item__readmoreButton {
+.readmoreButton {
     cursor: pointer;
     text-align: center;
     margin: 48px auto 0px auto;
@@ -50,6 +44,6 @@
     background-color: #333;
 }
 
-.item__readmoreButton:hover {
+.readmoreButton:hover {
     background-color: #18A0FB;
 }

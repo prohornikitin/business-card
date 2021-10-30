@@ -1,0 +1,60 @@
+@mixin transform($transforms) {
+	-webkit-transform: $transforms;
+	-moz-transform: $transforms;
+	-ms-transform: $transforms;
+	transform: $transforms;
+}
+
+.container {
+    margin: auto;
+}
+
+
+.image {
+    max-width: 100%;
+    width: 60%;
+    max-height: 70vh;
+    // float: left;
+}
+
+.text {
+    width: 40%;
+    float: right;
+    padding: 0 16px;
+}
+
+
+$activeColor: #000;
+$inactiveColor: #18A0FB;
+
+.closeButton {
+    position: absolute;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    right: 0;
+    top: 0;
+    overflow: hidden;
+    &:hover {
+        &::before, &::after {
+        background: $activeColor;
+        }
+    }
+    
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        top: 50%;
+        left: 0;
+        margin-top: -1px;
+        background: $inactiveColor;
+    }
+    &::before {
+        @include transform(rotate(45deg));
+    }
+    &::after {
+        @include transform(rotate(-45deg));
+    }
+}

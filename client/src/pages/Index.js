@@ -2,17 +2,19 @@ import React from 'react';
 import Navbar from '../components/Navbar/Component';
 import Section from '../components/Section/Component';
 import Profile from '../components/Profile/Component';
-import Portfolio from '../components/Portfolio/Component';
+import Portfolio from '../components/Portfolio/Container/Component';
 import photo from '../profile_photo.jpg'
 import ContactForm from '../components/ContactForm/Component';
 import IconLink from '../components/IconLink/Component';
 import github_icon from '../icons/github.png'
+
 
 export default function Index() {
     let text = "";
     for(let i=0; i<1000;++i){
         text += "DAS "
     }
+    
     return (
         <div>
             <Navbar items={[
@@ -33,9 +35,9 @@ export default function Index() {
                 backgroundColor: "#282828",
             }}>
                 <Portfolio items={[
-                    {image:"images/uploaded/mystand-1.jpg", title:"Title", technologies: ["React", "Express"]},
-                    {image:"images/uploaded/never-0.jpg", title:"Title", technologies: ["React", "Python"]},
-                    {image:"images/uploaded/never-1.jpg", title:"Title", technologies: ["Angular / Ruby on rails"]}
+                    {image:"images/uploaded/mystand-1.jpg", title:"Title 1", technologies: ["React", "Express"], link: "www.yarik.bat"},
+                    {image:"images/uploaded/never-0.jpg", title:"Title 2", technologies: ["React", "Python"], link: "www.yarik.bat"},
+                    {image:"images/uploaded/never-1.jpg", title:"Title 3", technologies: ["Angular / Ruby on rails"], link: "www.yarik.bat"}
                 ]}/>
             </Section>
             <Section id="contact" title="Contact" style={{backgroundColor: "#000"}}>
