@@ -1,63 +1,62 @@
-const express = require('express');
-const router = express.Router();
-const portfolioDao = require('../data/portfolio')
-const profileDao = require('../data/profile')
+const express = require('express')
+const router = express.Router()
+const portfolioStorage = require('../data/portfolio')
+const profileStorage = require('../data/profile')
+const authDataStorage = require('../data/authData')
+const auth = require('../logic/auth')
+const { errorHandler } = require('../logic/errors')
+
 
 router.get('/profile', (req, res) => {
-    profileDao.get().
-    then(data => {
-        res.json(data)
-    }).
-    catch(err => {
-        console.log(err);
-        res.sendStatus(500)
-    })
+    profileStorage.get()
+    .then(data => res.json(data))
+    .catch(errorHandler(res))
 })
 
 
 router.put('/profile', (req, res) => {
-    const data = req.body;
-    profileDao.update(data).
-    then(() => {
-        res.sendStatus(200)
-    }).
-    catch(err => {
-        console.log(err);
-        res.sendStatus(500)
-    })
+    const authData = req.body.authData
+    const data = req.body.data
+    auth(authData)
+    .then(() => {return profileStorage.update(data)})
+    .then(() => res.sendStatus(200))
+    .catch(errorHandler(res))
 })
 
 
 router.get('/portfolio', (req, res) => {
-    portfolioDao.getAll().
-    then(data => {
-        res.json(data);
-    }).
-    catch(err => {
-        console.error(err)
-        res.sendStatus(500)
-    })
+    portfolioStorage.getAll()
+    .then(data => res.json(data))
+    .catch(errorHandler(res))
 })
 
 router.put('/portfolio', (req, res) => {
-    const id = req.body.id
-    const data = req.body
-    const doDbActions = async() => {
+    const authData = req.body.authData
+    const data = req.body.data
+    const id = req.body.data.id
+
+    auth(authData)
+    .then(() => {
         if(id) {
-            await portfolioDao.updateExisting(id, data)
+            return portfolioStorage.updateExisting(id, data)
         } else {
-            await portfolioDao.putNew(data)
+            return portfolioStorage.putNew(data)
         }
-    }
-    doDbActions().
-    then(() => {
-        res.sendStatus(200)
-    }).
-    catch(err => {
-        console.error(err)
-        res.sendStatus(500)
     })
+    .then(() => res.sendStatus(200))
+    .catch(errorHandler(res))
 })
 
 
-module.exports = router;
+router.put('/changePassword', (req, res) => {
+    const authData = req.body.authData
+    const data = req.body.data
+
+    auth(authData)
+    .then(() => authDataStorage.update(data))
+    .then(() => res.sendStatus(200))
+    .catch(errorHandler(res))
+})
+
+
+module.exports = router

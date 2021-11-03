@@ -1,44 +1,25 @@
-const db = require('./connectionsPool')
+const db = require('./db')
+
+async function getCollection() {
+    const connection = await db.connect()
+    return connection.collection('portfolio')
+}
 
 module.exports.getAll = async() => {
-    const connection = await db.getConnection()
-    try {
-        let entries = await connection.query('SELECT * FROM Portfolio ORDER BY id ASC')
-        console.log(entries[0].technologies)
-        entries.forEach(i => {i.technologies = JSON.parse(i.technologies)});
-        console.log(entries[0].technologies)
-        return entries;
-    } finally {
-        connection.release()
-    }
+    const collection = await getCollection()
+    return collection.find({}).toArray()
 }
 
-
-module.exports.putNew = async(data)=>{
-    const connection = await db.getConnection()
-    try {
-        await connection.query(
-            'INSERT INTO Portfolio (image, title, technologies, description) VALUES (?,?,?,?)',
-            [data.image, data.title, JSON.stringify(data.technologies), data.description]
-        )
-    } finally {
-        connection.release()
-    }
+module.exports.putNew = async(data) => {
+    const collection = await getCollection()
+    const maxId = await collection.aggregate({
+        $group: { maxQuantity: {$max: "$id"} }
+    })
+    await collection.insertOne({ ...data, id: maxId+1 })
 }
+    
 
-module.exports.updateExisting = async(id, data)=>{
-    const connection = await db.getConnection()
-    try {
-        await connection.query(
-            `UPDATE Portfolio 
-                SET image = ?, 
-                    title = ?,
-                    technologies = ?,
-                    description = ?
-             WHERE id = ?`,
-            [data.image, data.title, JSON.stringify(data.technologies), data.description, id]
-        )
-    } finally {
-        connection.release()
-    }
+module.exports.updateExisting = async(id, data) => {
+    const collection = await getCollection()
+    await collection.updateOne({'id': id}, {$set: data})
 }

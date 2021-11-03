@@ -7,13 +7,10 @@ async function getCollection() {
 
 module.exports.get = async() => {
     const collection = await getCollection()
-    return collection.findOne({type: 'profile'})
+    return collection.findOne({type: 'authData'})
 }
 
-module.exports.update = async(newData) => {
+module.exports.update = async(data) => {
     const collection = await getCollection()
-    await collection.updateOne(
-        {type: 'profile'}, 
-        {$set: newData}
-    )
+    await collection.updateOne({type: 'authData'}, {$set: data})
 }
