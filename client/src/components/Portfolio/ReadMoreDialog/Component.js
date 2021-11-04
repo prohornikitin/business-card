@@ -16,7 +16,6 @@ export default function ReadMoreDialog({isOpen, onRequestClose, data}) {
         }
     }
     const techList = data.technologies.map(i => <li key={i}>{i}</li>)
-    console.log(data);
     return (
         <Modal
             isOpen={isOpen}

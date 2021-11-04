@@ -3,10 +3,7 @@ import Navbar from '../components/Navbar/Component';
 import Section from '../components/Section/Component';
 import Profile from '../components/Profile/Component';
 import Portfolio from '../components/Portfolio/Container/Component';
-import photo from '../profile_photo.jpg'
 import ContactForm from '../components/ContactForm/Component';
-import IconLink from '../components/IconLink/Component';
-import github_icon from '../icons/github.png'
 
 
 export default function Index() {
@@ -25,30 +22,19 @@ export default function Index() {
             <Section id="home" style={{
                 backgroundColor: "#000",
             }}>
-                <Profile
-                    photo={photo}
+                <Profile fetchUrl="/api/profile"/>
+                    {/* photo={photo}
                     name="Name" 
                     job="Not a web-developer"
-                    about = {"This is a text about me." + " das".repeat(100)}/>
+                    about = {"This is a text about me." + " das".repeat(100)}/> */}
             </Section>
             <Section id="portfolio" title="Portfolio" style={{
                 backgroundColor: "#282828",
             }}>
-                <Portfolio items={[
-                    {image:"images/uploaded/mystand-1.jpg", title:"Title 1", technologies: ["React", "Express"], link: "www.yarik.bat"},
-                    {image:"images/uploaded/never-0.jpg", title:"Title 2", technologies: ["React", "Python"], link: "www.yarik.bat"},
-                    {image:"images/uploaded/never-1.jpg", title:"Title 3", technologies: ["Angular / Ruby on rails"], link: "www.yarik.bat"}
-                ]}/>
+                <Portfolio fetchUrl="/api/portfolio"/>
             </Section>
             <Section id="contact" title="Contact" style={{backgroundColor: "#000"}}>
-                <div style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr 1fr",
-                    gridTemplateRows: "1fr",
-                }}>
-                    <IconLink icon={github_icon} href="https://github.com/prohornikitin/business-card"/>
-                    <ContactForm/>
-                </div>
+                <ContactForm/>
             </Section>
         </div>
     );
