@@ -12,9 +12,7 @@ module.exports.getAll = async() => {
 
 module.exports.putNew = async(data) => {
     const collection = await getCollection()
-    const maxId = await collection.aggregate({
-        $group: { maxQuantity: {$max: "$id"} }
-    })
+    const maxId = await collection.find().sort({id:-1}).limit(1) 
     await collection.insertOne({ ...data, id: maxId+1 })
 }
     

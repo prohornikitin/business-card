@@ -22,5 +22,4 @@ yarn-error.log*
 
 # public
 /public/images/**
-/public/*.html
 /public/*.js

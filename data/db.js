@@ -19,5 +19,3 @@ module.exports.connect = async() => {
     }
     return db   
 }
-
-

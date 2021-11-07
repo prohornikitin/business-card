@@ -3,9 +3,12 @@ const { AuthError } = require('./errors')
 
 
 async function auth(arg) {
+    if(!arg) {
+        throw new AuthError("Can't auth");
+    }
     const real = await authDataStorage.get()
     if(
-        real == null ||
+        !real || 
         real.login !== arg.login ||
         real.password !== arg.password
     ) {

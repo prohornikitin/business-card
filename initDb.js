@@ -26,7 +26,7 @@ async function init() {
         {
             id: 0,
             image:'images/uploaded/mystand-1.jpg',
-            title:'Title 1',
+            title:'First Project',
             technologies: ['React', 'Express'],
             description: 'This is description '.repeat(50),
             link: 'www.yarik.bat'
@@ -34,7 +34,7 @@ async function init() {
         {
             id: 1,
             image:'images/uploaded/never-0.jpg',
-            title:'Title 2',
+            title:'Second Project',
             technologies: ['React', 'Python'],
             description: 'This is description '.repeat(50),
             link: 'www.yarik.bat'
@@ -42,7 +42,7 @@ async function init() {
         {
             id: 2,
             image:'images/uploaded/never-1.jpg',
-            title:'Title 3',
+            title:'Third Project',
             technologies: ['Angular / Ruby on rails'],
             description: 'This is description '.repeat(50),
             link: 'www.yarik.bat'

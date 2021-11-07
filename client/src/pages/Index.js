@@ -23,10 +23,6 @@ export default function Index() {
                 backgroundColor: "#000",
             }}>
                 <Profile fetchUrl="/api/profile"/>
-                    {/* photo={photo}
-                    name="Name" 
-                    job="Not a web-developer"
-                    about = {"This is a text about me." + " das".repeat(100)}/> */}
             </Section>
             <Section id="portfolio" title="Portfolio" style={{
                 backgroundColor: "#282828",
