@@ -1,21 +1,11 @@
-const { MongoClient } = require('mongodb')
-
-const url = 'mongodb://localhost:27017'
-const dbName = 'siteCard'
-
+const config = require('./config/db.json')
+const mysql2 = require('mysql2/promise')
 
 let db = undefined
 
-async function connectToDb() {
-    const client = new MongoClient(url)
-    const connection = await client.connect()
-    process.on("exit", connection.close)
-    return client.db(dbName)
-}
-
 module.exports.connect = async() => {
     if(!db) {
-        db = await connectToDb()
+        db = mysql2.createPool({...config, connectionLimit: 5})
     }
-    return db   
+    return db.getConnection()
 }

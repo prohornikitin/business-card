@@ -1,16 +1,24 @@
 const db = require('./db')
 
-async function getCollection() {
-    const connection = await db.connect()
-    return connection.collection('single')
-}
-
 module.exports.get = async() => {
-    const collection = await getCollection()
-    return collection.findOne({type: 'authData'})
+    const conn = await db.connect()
+    try {
+        const [rows, fields] = await conn.query('SELECT * FROM Singleton WHERE id="authData"')
+        return JSON.parse(rows[0].data)
+    } finally {
+        conn.release()
+    }
 }
 
 module.exports.update = async(data) => {
-    const collection = await getCollection()
-    await collection.updateOne({type: 'authData'}, {$set: data})
+    const conn = db.connect()
+    try {
+        await conn.query(`UPDATE Singleton 
+            SET data = ? 
+            WHERE id='authData'`,
+            [data]
+        )
+    } finally {
+        conn.release()
+    }
 }
