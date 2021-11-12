@@ -24,7 +24,10 @@ function errorHandler(res) {
     }
 }
 
+
 module.exports = {
     errorHandler,
     AuthError
 }
+
+

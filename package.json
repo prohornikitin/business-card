@@ -10,6 +10,7 @@
     "express": "^4.16.1",
     "express-fileupload": "^1.2.1",
     "express-form-data": "^2.0.17",
+    "express-validator": "^6.13.0",
     "morgan": "^1.9.1",
     "mysql2": "^2.3.3-rc.0"
   },

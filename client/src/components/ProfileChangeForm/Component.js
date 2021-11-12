@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import FileUpload from '../FileUpload/Component'
-import { uploadFile, putJson } from '../../etc/network'
+import { uploadFile, patchJson } from '../../etc/network'
 
 export default function ProfileChangeForm({authData}) {
     const [photo, setPhoto] = useState()
@@ -27,12 +27,12 @@ export default function ProfileChangeForm({authData}) {
         })
         if(photo) {
             uploadFile(photo, authData)
-            .then(fileName => putJson(
+            .then(fileName => patchJson(
                 '/api/profile', 
                 {
                     photo: fileName,
-                    name, 
-                    job, 
+                    name,
+                    job,
                     about
                 },
                 authData
@@ -40,7 +40,7 @@ export default function ProfileChangeForm({authData}) {
             .then(onSuccess)
             .catch(onError)
         } else {
-            putJson(
+            patchJson(
                 '/api/profile', 
                 {name, job, about},
                 authData

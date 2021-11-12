@@ -4,6 +4,7 @@ import './index.scss';
 import Index from './pages/Index';
 import ControlPanel from './pages/ControlPanel'
 import Modal from 'react-modal'
+import "regenerator-runtime/runtime";
 
 
 Modal.setAppElement('#root');

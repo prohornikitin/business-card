@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import FileUpload from '../FileUpload/Component'
-import { uploadFile, putJson } from '../../etc/network'
+import { uploadFile, patchJson, putJson } from '../../etc/network'
 import Select from '../Select/Component'
 import { useFetch } from '../../hooks'
 
@@ -27,39 +27,32 @@ export default function PortfolioChangeForm({authData}) {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        const id = (projectId != -1) ? projectId : undefined
-        if(image) {
-            uploadFile(image, authData)
-            .then(fileName => {
-                console.log(fileName)
-                putJson(
-                '/api/portfolio', 
-                {
-                    id,
-                    image: fileName,
-                    title, 
-                    description,
-                    technologies,
-                    link
-                },
-                authData
-            )})
-            .then(onSuccess)
-            .catch(onError)
-        } else {
-            putJson(
-                '/api/portfolio', 
-                {id, title, description, technologies, link},
-                authData
-            )
-            .then(onSuccess)
-            .catch(onError)
+        const action = async() => {
+            const imagePath = image ? (await uploadFile(image, authData)) : undefined
+            const data = {
+                id: projectId, 
+                image: imagePath, 
+                title, 
+                description, 
+                technologies: technologies ? technologies.split(' ') : [], 
+                link}
+            console.log(projectId)
+            if(projectId == -1) {
+                putJson('/api/portfolio', data, authData)
+            } else {
+                
+                patchJson('/api/portfolio', data, authData)
+            }
         }
+
+        action()
+        .then(onSuccess)
+        .catch(onError)
     }
 
     return (
         <form method='post' onSubmit={onSubmit}>
-            <Select defaultValue="-1" onChange={(e)=>setProjectId(event.target.value)}>
+            <Select defaultValue="-1" onChange={(e)=>setProjectId(e.target.value)}>
                 <option value="-1">Новый проект</option>
                 {portfolio.map(i => <option key={i.id} value={i.id}>{i.title}</option>)}
             </Select>

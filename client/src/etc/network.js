@@ -10,21 +10,23 @@ export function uploadFile(file, authData) {
     .then(res => res.json())
 }
 
-export function putJson(url, data, authData) {
-    console.log({
-        authData, 
-        data
-    })
-    return fetch(url, {
-        method: 'PUT',
-        headers: new Headers({'content-type': 'application/json'}),
-        body: JSON.stringify({
-            authData, 
-            data
+
+function sendJson(method) {
+    return function(url, data, authData) {
+        return fetch(url, {
+            method: method,
+            headers: new Headers({'content-type': 'application/json'}),
+            body: JSON.stringify({
+                authData, 
+                data
+            })
+        }).then(res => {
+            if(!res.ok) {
+                throw res.statusText
+            }
         })
-    }).then(res => {
-        if(!res.ok) {
-            throw res.statusText
-        }
-    })
+    }
 }
+
+export const patchJson = sendJson('PATCH')
+export const putJson = sendJson('PUT')
