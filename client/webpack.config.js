@@ -42,11 +42,4 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new CopyPlugin({
-      patterns: [
-        { from: "./src/portfolio_images", to: "./images/uploaded" },
-      ],
-    }),
-  ],
 }

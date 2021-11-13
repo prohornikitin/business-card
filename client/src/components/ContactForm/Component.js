@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import s from './style.scss'
-import classnames from 'classnames'
 
 
 export default function ContactForm() {
