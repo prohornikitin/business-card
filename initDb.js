@@ -20,13 +20,13 @@ async function createTables() {
             title VARCHAR(255) NOT NULL UNIQUE,
             image TEXT NOT NULL,
             description MEDIUMTEXT NOT NULL,
-            technologies JSON NOT NULL,
+            technologies LONGTEXT NOT NULL,
             link TEXT NOT NULL,
             PRIMARY KEY(id)
         )`)
         await conn.query(`CREATE TABLE IF NOT EXISTS Singleton(
             id VARCHAR(255) NOT NULL,
-            data JSON,
+            data LONGTEXT,
             PRIMARY KEY(id)
         );`)
     } finally {
