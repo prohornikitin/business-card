@@ -6,13 +6,17 @@ import Modal from 'react-modal'
 export default function ReadMoreDialog({isOpen, onRequestClose, data}) {
     const style = {
         overlay: {
-            backgroundColor: "#000000AA"
+            backgroundColor: "000000AA"
         },
         content: {
             boxSizing: "border-box",
             border: "none",
-            borderRadius: "0px",
-            backgroundColor: "#333"
+            borderRadius: "20px",
+            backgroundColor: "#333",
+            inset: "200px",
+            width: "1200px",
+            margin: "auto",
+            height: "fit-content",    
         }
     }
     const techList = data.technologies.map(i => <li key={i}>{i}</li>)
@@ -28,7 +32,7 @@ export default function ReadMoreDialog({isOpen, onRequestClose, data}) {
                 <div className={s.text}>
                     <h3>Technologies:</h3>
                     <ul>{techList}</ul>
-                    <h3>Description:</h3>
+                    <h3 style={{display:"inline"}}>Description: </h3>
                     <p>{data.description}</p>
                     <p>Link: <a href={data.link}>{data.link}</a></p>
                 </div>

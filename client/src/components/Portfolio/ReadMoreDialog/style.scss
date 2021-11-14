@@ -6,7 +6,9 @@
 }
 
 .container {
-    margin: auto;
+    width: 100%;
+    margin: 15px;
+    display: flex;
 }
 
 
@@ -14,12 +16,10 @@
     max-width: 100%;
     width: 60%;
     max-height: 70vh;
-    // float: left;
 }
 
 .text {
     width: 40%;
-    float: right;
     padding: 0 16px;
 }
 
