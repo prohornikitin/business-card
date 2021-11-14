@@ -21,5 +21,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # public
-/public/images/**
+/public/images/uploaded/*
+!/public/images/uploaded/.gitkeep
 /public/*.js
