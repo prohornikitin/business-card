@@ -5,7 +5,8 @@ import ReadMoreDialog from '../ReadMoreDialog/Component';
 
 export default function Item({image, title, technologies, description, link}) {
     const [dialogOpen, setDialogOpen] = useState(false);
-    const techStr = technologies.reduce((acc, tech) => `${acc} / ${tech}`)
+    console.log("TECH:", technologies)
+    const techStr = (technologies.length != 0) ? technologies.reduce((acc, tech) => `${acc} / ${tech}`) : ""
 
     return (
         <div key={image} 

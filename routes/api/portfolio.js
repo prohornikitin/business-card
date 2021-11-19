@@ -61,14 +61,11 @@ router.patch(
         const authData = req.body.authData
         let data = req.body.data
         const id = req.body.data.id
-        if(data.technologies) {
-            data.technologies = data.technologies.split(' ')
-        }
+
+        console.log(data.technologies)
 
         auth(authData)
-        .then(() => {
-            return storage.updateExisting(id, data)
-        })
+        .then(() => storage.updateExisting(id, data))
         .then(() => res.sendStatus(200))
         .catch(errorHandler(res))
     }

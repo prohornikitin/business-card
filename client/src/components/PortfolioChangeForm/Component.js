@@ -34,9 +34,9 @@ export default function PortfolioChangeForm({authData}) {
                 image: imagePath, 
                 title, 
                 description, 
-                technologies: technologies ? technologies.split(' ') : [], 
-                link}
-            console.log(projectId)
+                technologies: technologies ? technologies.split(' ') : undefined, 
+                link
+            }
             if(projectId == -1) {
                 putJson('/api/portfolio', data, authData)
             } else {
