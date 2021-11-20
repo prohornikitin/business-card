@@ -67,10 +67,10 @@ export default function ContactForm() {
                 : ''
             }
             <form href='#'>
-                <input type='text' placeholder='Your name' onChange={(e)=>{setName(e.target.value)}}/>
-                <input type='email' placeholder='Your email' onChange={(e)=>{setEmail(e.target.value)}}/>
-                <textarea placeholder='Your message' onChange={(e)=>{setMsg(e.target.value)}}/>
-                <input type='submit' value='Submit' onClick={onSubmit}
+                <input type='text' placeholder='Ваше имя' onChange={e =>{setName(e.target.value)}}/>
+                <input type='email' placeholder='Email для ответа' onChange={e =>{setEmail(e.target.value)}}/>
+                <textarea placeholder='Сообщение' onChange={e =>{setMsg(e.target.value)}}/>
+                <input type='submit' value='Отправить' onClick={onSubmit}
                     style={{marginTop: "16px"}}/>
             </form>
 

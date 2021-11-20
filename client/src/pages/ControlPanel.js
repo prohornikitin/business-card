@@ -15,17 +15,12 @@ export default function ControlPanel() {
     	<div>
             <AuthDialog isOpen={!authData} 
                 onSuccessAuth={setAuthData}/>
-            <Navbar items={[
-                {text:"Home", sectionId:"home"},
-                {text:"Portfolio", sectionId:"portfolio"},
-                {text:"AuthData", sectionId:"authData"},
-            ]}/>
-            <Section id="home" title="Profile" style={{
+            <Section id="profile" title="Изменение профиля" style={{
                 backgroundColor: "#000",
             }}>
                 <ProfileChangeForm authData={authData}/>
             </Section>
-            <Section id="portfolio" title="Portfolio" style={{
+            <Section id="portfolio" title="Изменение портфолио" style={{
                 backgroundColor: "#282828",
             }}>
                 <PortfolioChangeForm authData={authData}/>

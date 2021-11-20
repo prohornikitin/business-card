@@ -61,7 +61,7 @@ export default function AuthDialog({isOpen, onSuccessAuth}) {
                     placeholder='Пароль'
                     onChange={(e)=>setPassword(e.target.value)}>
                 </input>
-                <input type='submit'></input>
+                <input type='submit' value='Войти'/>
             </form>
         </Modal>
     );

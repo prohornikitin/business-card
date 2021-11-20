@@ -15,21 +15,21 @@ export default function Index() {
     return (
         <div>
             <Navbar items={[
-                {text:"Home", sectionId:"home"},
-                {text:"Portfolio", sectionId:"portfolio"},
-                {text:"Contact", sectionId:"contact"},
+                {text:"Обо мне", sectionId:"home"},
+                {text:"Портофлио", sectionId:"portfolio"},
+                {text:"Контакты", sectionId:"contact"},
             ]}/>
             <Section id="home" style={{
                 backgroundColor: "#000",
             }}>
                 <Profile fetchUrl="/api/profile"/>
             </Section>
-            <Section id="portfolio" title="Portfolio" style={{
+            <Section id="portfolio" title="Портфолио" style={{
                 backgroundColor: "#282828",
             }}>
                 <Portfolio fetchUrl="/api/portfolio"/>
             </Section>
-            <Section id="contact" title="Contact" style={{backgroundColor: "#000"}}>
+            <Section id="contact" title="Контакты" style={{backgroundColor: "#000"}}>
                 <ContactForm/>
             </Section>
         </div>
