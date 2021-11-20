@@ -38,8 +38,8 @@ router.post(
 )
 
 
-router.put(
-    '/changePassword', 
+router.patch(
+    '/authData', 
     ...validators.authData('authData'),
     ...validators.authData('data'),
     (req, res) => {

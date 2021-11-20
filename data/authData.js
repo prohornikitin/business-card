@@ -11,12 +11,12 @@ module.exports.get = async() => {
 }
 
 module.exports.update = async(data) => {
-    const conn = db.connect()
+    const conn = await db.connect()
     try {
         await conn.query(`UPDATE Singleton 
             SET data = ? 
-            WHERE id='authData'`,
-            [data]
+            WHERE id = 'authData'`,
+            [JSON.stringify(data)]
         )
     } finally {
         conn.release()

@@ -4,6 +4,7 @@ import Section from '../components/Section/Component'
 import AuthDialog from '../components/AuthDialog/Component'
 import ProfileChangeForm from '../components/ProfileChangeForm/Component';
 import PortfolioChangeForm from '../components/PortfolioChangeForm/Component';
+import AuthDataChangeForm from '../components/AuthDataChangeForm/Component';
 
 
 export default function ControlPanel() {
@@ -17,7 +18,7 @@ export default function ControlPanel() {
             <Navbar items={[
                 {text:"Home", sectionId:"home"},
                 {text:"Portfolio", sectionId:"portfolio"},
-                {text:"Contact", sectionId:"contact"},
+                {text:"AuthData", sectionId:"authData"},
             ]}/>
             <Section id="home" title="Profile" style={{
                 backgroundColor: "#000",
@@ -29,8 +30,8 @@ export default function ControlPanel() {
             }}>
                 <PortfolioChangeForm authData={authData}/>
             </Section>
-            <Section id="contact" title="Contact" style={{backgroundColor: "#000"}}>
-                
+            <Section id="authData" title="Смена данных для входа" style={{backgroundColor: "#000"}}>
+                <AuthDataChangeForm authData={authData}/>
             </Section>
         </div>
     )
