@@ -74,7 +74,7 @@ export default function PortfolioChangeForm({authData}) {
                 onChange={(e)=>setDescription(e.target.value)}
             />
             <FileUpload label='Картинка' onChange={setImage}/>
-            <input type='submit' name ='submit' value='Изменить'/>
+            <input type='submit' name='submit' value={(projectId == -1) ? 'Добавить' : 'Изменить'}/>
         </form>
     )
 }
