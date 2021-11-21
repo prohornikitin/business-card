@@ -7,54 +7,35 @@
 
 .container {
     width: 100%;
-    margin: 15px;
-    display: flex;
 }
 
 
 .image {
-    max-width: 100%;
-    width: 60%;
-    max-height: 70vh;
+    width: 100%;
 }
 
 .text {
-    width: 40%;
-    padding: 0 16px;
+    margin: 16px 32px;
+    font-size: 14pt;
 }
 
+
+.link {
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    width: fit-content;
+    padding: 4px 12px;
+    font-size: 14pt;
+    border: solid #18A0FB 2px;
+    border-radius: 5px;
+    background-color: #333;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #18A0FB;
+    }
+}
 
 $activeColor: #000;
 $inactiveColor: #18A0FB;
-
-.closeButton {
-    position: absolute;
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    right: 0;
-    top: 0;
-    overflow: hidden;
-    &:hover {
-        &::before, &::after {
-        background: $activeColor;
-        }
-    }
-    
-    &::before, &::after {
-        content: '';
-        position: absolute;
-        height: 2px;
-        width: 100%;
-        top: 50%;
-        left: 0;
-        margin-top: -1px;
-        background: $inactiveColor;
-    }
-    &::before {
-        @include transform(rotate(45deg));
-    }
-    &::after {
-        @include transform(rotate(-45deg));
-    }
-}
