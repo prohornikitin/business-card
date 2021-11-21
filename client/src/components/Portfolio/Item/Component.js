@@ -22,7 +22,7 @@ export default function Item({image, title, technologies, description, link}) {
                 <h4 className={s.title}>{title}</h4>
                 <p className={s.technologies}>{techStr}</p>
                 <div className={s.readmoreButton} onClick={()=>setDialogOpen(true)}>
-                    Read More
+                    Подробнее
                 </div>
             </div>
         </div>
