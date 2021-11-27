@@ -42,17 +42,27 @@ export default function ContactForm() {
         event.preventDefault()
         setSent(true)
         const errors = getInputErrors()
-        if(errors.length == 0) {
-            fetch('./api/contact').then((response)=>{
-                if (response.status !== 200) {
-                    setInputErrors(["Unknown Error. Try another ways."]);
-                }
-            }).catch(() => {
-                setInputErrors(["Unknown Error. Try another ways."]);
-            })
-        } else {
+        if(errors.length != 0) {
             setInputErrors(errors)
+            return;
         }
+        fetch('./api/contact', {
+            method: 'POST',
+            headers: new Headers({'content-type': 'application/json'}),
+            body: JSON.stringify({
+                name,
+                email,
+                msg,
+            })
+        }).then((response)=>{
+            if (response.status == 200) {
+                setInputErrors([])
+            } else {
+                setInputErrors(["Unknown Error. Try another ways."]);
+            }
+        }).catch(() => {
+            setInputErrors(["Unknown Error. Try another ways."]);
+        })
     }
 
     return (
@@ -73,7 +83,6 @@ export default function ContactForm() {
                 <input type='submit' value='Отправить' onClick={onSubmit}
                     style={{marginTop: "16px"}}/>
             </form>
-
         </div>
     )
 }

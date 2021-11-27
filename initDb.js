@@ -83,6 +83,17 @@ async function fillTheTables() {
                 })
             ]
         )
+        await conn.query('INSERT INTO Singleton (id, data) VALUES (?, ?)', 
+            [
+                'email', 
+                JSON.stringify({
+                    "email": "",
+                    "host": "",
+                    "username": "",
+                    "passowrd": "",
+                })
+            ]
+        )
     } finally {
         conn.release()
     }

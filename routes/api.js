@@ -6,6 +6,8 @@ const fs = require('fs')
 const path = require('path')
 const { body, validationResult } = require('express-validator')
 const validators = require('../logic/validators')
+const { sendAnEmail } = require('../logic/sendAnEmail')
+
 
 router.use('/profile', require('./api/profile'))
 router.use('/portfolio', require('./api/portfolio'))
@@ -71,5 +73,23 @@ router.patch(
 )
 
 
+router.post(
+    '/contact',
+    body('name').isString(),
+    body('email').isEmail(),
+    body('msg').isString(),
+    (req, res) => {
+        
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) {
+            console.warn(errors.array())
+            return res.status(422).json(errors.array())
+        }
+
+        sendAnEmail(req.body.email, req.body.name, req.body.msg)
+        .then(() => res.sendStatus(200))
+        .catch(errorHandler(res))
+    }
+)
 
 module.exports = router
