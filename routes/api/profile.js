@@ -4,6 +4,7 @@ const auth = require('../../logic/auth')
 const { errorHandler } = require('../../logic/errors')
 const { body, validationResult, oneOf } = require('express-validator')
 const validators = require('../../logic/validators')
+const deleteFalsy = require('../../logic/deleteFalsy')
 
 
 router.get(
@@ -34,7 +35,7 @@ router.patch('/',
         const authData = req.body.authData
         const data = req.body.data
         auth(authData)
-        .then(() => storage.update(data))
+        .then(() => storage.update(deleteFalsy(data)))
         .then(() => res.sendStatus(200))
         .catch(errorHandler(res))
     }
