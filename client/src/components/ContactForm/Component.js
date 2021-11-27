@@ -40,8 +40,8 @@ export default function ContactForm() {
 
     const onSubmit = (event) => {
         event.preventDefault()
-        setSent(true)
         const errors = getInputErrors()
+        setSent(true)
         if(errors.length != 0) {
             setInputErrors(errors)
             return;
@@ -67,14 +67,16 @@ export default function ContactForm() {
 
     return (
         <div className={s.container}>
-            { hasBeenSent ?
-                inputErrors.length == 0 ?
-                    <div className={s.success_msg}> {successMsg} </div>
-                    :
-                    <div className={s.error_msg}> 
-                        {formatErrors(inputErrors)}
-                    </div>
-                : ''
+            { hasBeenSent && inputErrors.length == 0 ?
+                <div className={s.success_msg}> {successMsg} </div>
+                : ""
+            }
+            {
+                hasBeenSent && inputErrors.length != 0 ?
+                <div className={s.error_msg}> 
+                    {formatErrors(inputErrors)}
+                </div>
+                : ""
             }
             <form href='#'>
                 <input type='text' placeholder='Ваше имя' onChange={e =>{setName(e.target.value)}}/>

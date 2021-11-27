@@ -11,6 +11,7 @@ const { sendAnEmail } = require('../logic/sendAnEmail')
 
 router.use('/profile', require('./api/profile'))
 router.use('/portfolio', require('./api/portfolio'))
+router.use('/email', require('./api/email'))
 
 
 router.put(
@@ -91,5 +92,7 @@ router.post(
         .catch(errorHandler(res))
     }
 )
+
+
 
 module.exports = router
