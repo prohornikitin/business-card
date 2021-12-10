@@ -4,7 +4,7 @@ const auth = require('../../logic/auth')
 const { errorHandler } = require('../../logic/errors')
 const { body, validationResult, oneOf } = require('express-validator')
 const validators = require('../../logic/validators')
-const deleteFalsy = require('../../logic/deleteFalsy')
+const { deleteFalsy } = require('../../logic/deleteFalsy')
 
 
 router.get(
