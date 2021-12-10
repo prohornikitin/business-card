@@ -18,15 +18,15 @@ router.put(
     '/upload',
     ...validators.authData(),
     (req, res) => {
-        const errors = validationResult(req);
+        const errors = validationResult(req)
         if(!errors.isEmpty()) {
             console.warn(errors.array())
             return res.status(422).json(errors.array())
         }
 
         const file = req.files.file
-        const realNewPath = './client/public/images/uploaded/' + file.name
-        const newAccessPath = 'images/uploaded/' + file.name;
+        const realNewPath = `./client/public/images/uploaded/${Date.now()}`
+        const newAccessPath = `images/uploaded/${Date.now()}`
         auth(req.body)
         .then(() => fs.promises.copyFile(file.path, realNewPath))
         .then(() => res.json(newAccessPath))
@@ -39,7 +39,7 @@ router.post(
     '/checkAuth', 
     ...validators.authData('authData'),
     (req, res) => {
-        const errors = validationResult(req);
+        const errors = validationResult(req)
         if(!errors.isEmpty()) {
             console.warn(errors.array())
             return res.status(422).json(errors.array())
@@ -57,7 +57,7 @@ router.patch(
     ...validators.authData('authData'),
     ...validators.authData('data'),
     (req, res) => {
-        const errors = validationResult(req);
+        const errors = validationResult(req)
         if(!errors.isEmpty()) {
             console.warn(errors.array())
             return res.status(422).json(errors.array())
@@ -81,7 +81,7 @@ router.post(
     body('msg').isString(),
     (req, res) => {
         
-        const errors = validationResult(req);
+        const errors = validationResult(req)
         if(!errors.isEmpty()) {
             console.warn(errors.array())
             return res.status(422).json(errors.array())
